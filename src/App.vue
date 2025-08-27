@@ -46,7 +46,7 @@ const resetScore = () => {
     <div class="boards">
       <section v-for="(playerInfos, index) in playersList" :key="playerInfos.id">
         <h3>{{ playerInfos.alias }}</h3>
-        <div>
+        <div class="description">
           <p>{{ playerInfos.age }} ans</p>
           <p>level {{ playerInfos.level }}</p>
         </div>
@@ -58,13 +58,23 @@ const resetScore = () => {
           <button @click="addFive(index)">Add 5 points</button>
         </div>
       </section>
-      <button @click="resetScore">reset</button>
     </div>
+    <button @click="resetScore">reset</button>
   </main>
 </template>
 
 <style scoped>
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+  background-color: pink;
+}
 .boards {
+  /* border: 1px solid green; */
+  width: 100%;
   display: flex;
 }
 
@@ -74,5 +84,9 @@ section > div {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+section:last-child {
+  border-left: 1px solid coral;
 }
 </style>
