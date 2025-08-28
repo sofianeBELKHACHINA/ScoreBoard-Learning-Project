@@ -50,9 +50,15 @@ const resetScore = () => {
           <p>{{ playerInfos.age }} ans</p>
           <p>level {{ playerInfos.level }}</p>
         </div>
+
+        <p class="wins">
+          {{ playerInfos.gender === 'male' ? 'He' : 'She' }} has already
+          <span>{{ playerInfos.numberOfWin }}</span>
+          {{ playerInfos.numberOfWin > 1 ? 'victories' : 'victory' }}
+        </p>
         <h2>Actual score</h2>
         <p>{{ playerInfos.actualScore }}</p>
-        <div>
+        <div class="buttonsBloc">
           <button @click="addOne(index)">Add 1 point</button>
           <button @click="addTwo(index)">Add 2 points</button>
           <button @click="addFive(index)">Add 5 points</button>
@@ -70,7 +76,7 @@ main {
   align-items: center;
   justify-content: space-around;
   height: 100vh;
-  background-color: pink;
+  background-color: white;
 }
 .boards {
   /* border: 1px solid green; */
@@ -88,5 +94,63 @@ section > div {
 
 section:last-child {
   border-left: 1px solid coral;
+}
+
+.description {
+  margin: 10px 0 20px 0;
+}
+.wins {
+  margin-bottom: 20px;
+}
+.wins span {
+  color: coral;
+}
+
+h2 + p {
+  font-size: 40px;
+  margin: 15px 0;
+  background-color: coral;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonsBloc {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.buttonsBloc button {
+  border: 2px coral solid;
+  background-color: white;
+  color: coral;
+  border-radius: 7px;
+  padding: 5px 7px;
+}
+
+.buttonsBloc button:hover {
+  cursor: pointer;
+  background-color: coral;
+  color: white;
+}
+
+main > button {
+  color: grey;
+  border: 1px solid grey;
+  background-color: white;
+  padding: 5px 7px;
+  border-radius: 7px;
+}
+main > button:hover {
+  background-color: coral;
+  color: white;
+  cursor: pointer;
+}
+
+button:active {
+  opacity: 0.5;
 }
 </style>
