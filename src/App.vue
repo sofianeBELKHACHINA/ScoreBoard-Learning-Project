@@ -21,16 +21,9 @@ const playersList = ref([
   },
 ])
 
-const addOne = (index) => {
-  playersList.value[index].actualScore += 1
-}
-
-const addTwo = (index) => {
-  playersList.value[index].actualScore += 2
-}
-
-const addFive = (index) => {
-  playersList.value[index].actualScore += 5
+const pointValueList = [1, 2, 5]
+const addPoint = (index, pointValue) => {
+  playersList.value[index].actualScore += pointValue
 }
 
 const resetScore = () => {
@@ -58,10 +51,18 @@ const resetScore = () => {
         </p>
         <h2>Actual score</h2>
         <p>{{ playerInfos.actualScore }}</p>
+
         <div class="buttonsBloc">
-          <button @click="addOne(index)">Add 1 point</button>
-          <button @click="addTwo(index)">Add 2 points</button>
-          <button @click="addFive(index)">Add 5 points</button>
+          <button
+            v-for="pointValue in pointValueList"
+            :key="pointValue"
+            @click="addPoint(index, pointValue)"
+          >
+            Add {{ pointValue }} points
+          </button>
+          <!-- <button @click="addPoint(index, 1)">Add 1 point</button>
+          <button @click="addPoint(index, 2)">Add 2 points</button>
+          <button @click="addPoint(index, 5)">Add 5 points</button> -->
         </div>
       </section>
     </div>
@@ -135,6 +136,8 @@ h2 + p {
   cursor: pointer;
   background-color: coral;
   color: white;
+  scale: 1.2;
+  transition: scale 0.3;
 }
 
 main > button {
